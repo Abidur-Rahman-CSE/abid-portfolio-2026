@@ -74,12 +74,12 @@ export default function About() {
                 
                 {/* Header */}
                 <div className="max-w-3xl">
-                    <div className="text-[#00F0FF] font-mono text-xs tracking-widest uppercase mb-3">// ABOUT THE ENGINEER</div>
+                    <div className="text-[#00F0FF] font-mono text-xs tracking-widest uppercase mb-3">// ABOUT ABIDUR RAHMAN</div>
                     <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
                         Engineered for Resilience, Scalability & Performance
                     </h1>
                     <p className="text-gray-300 text-lg leading-relaxed">
-                        I am a Senior Software Engineer specializing in distributed system architecture, high-concurrency microservices, and AI pipeline orchestration.
+                        I am a Senior Software & AI Engineer. My engineering focus is on distributed backend architecture, high-concurrency event pipelines, full-stack reactive applications, and interactive 3D WebGL web platforms.
                     </p>
                 </div>
 
@@ -87,22 +87,22 @@ export default function About() {
                 <div className="grid lg:grid-cols-12 gap-12 items-center">
                     <div className="lg:col-span-6 space-y-6 text-gray-300 leading-relaxed text-sm sm:text-base">
                         <p>
-                            My software engineering journey is grounded in building production-grade platforms capable of processing millions of events per day without downtime.
+                            With over 5 years of software development experience, I design production systems capable of handling thousands of requests per second without compromising data integrity.
                         </p>
                         <p>
-                            I bridge the gap between theoretical AI models and real-world system architecture—leveraging Go for lightweight microservices, Python/PyTorch for GPU inference optimization, and Laravel/React/Inertia for intuitive full-stack applications.
+                            I build clean, maintainable software architectures—leveraging Laravel, React, Inertia, and TypeScript for responsive user interfaces, and Golang, Python, and Rust for high-throughput backend services.
                         </p>
 
                         <div className="grid grid-cols-2 gap-4 pt-4">
                             <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10">
                                 <Cpu className="w-5 h-5 text-[#00F0FF] mb-2" />
                                 <h4 className="text-white font-bold text-sm mb-1">Distributed Backend</h4>
-                                <p className="text-xs text-gray-400">gRPC, Kafka, Redis & Microservices</p>
+                                <p className="text-xs text-gray-400">Go, Kafka, Redis & Microservices</p>
                             </div>
                             <div className="p-4 rounded-xl bg-white/[0.02] border border-white/10">
                                 <Layers className="w-5 h-5 text-[#A855F7] mb-2" />
-                                <h4 className="text-white font-bold text-sm mb-1">Full-Stack Architecture</h4>
-                                <p className="text-xs text-gray-400">Laravel, React 19 & Inertia.js</p>
+                                <h4 className="text-white font-bold text-sm mb-1">Full-Stack Inertia/React</h4>
+                                <p className="text-xs text-gray-400">Laravel 13, React 19 & Three.js</p>
                             </div>
                         </div>
                     </div>
@@ -110,20 +110,20 @@ export default function About() {
                     <div className="lg:col-span-6">
                         <div className="p-8 rounded-2xl bg-gradient-to-br from-[#0c0c16] to-[#050508] border border-white/15 shadow-2xl">
                             <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                                <ShieldCheck className="w-5 h-5 text-[#00F0FF]" /> Engineering Principles
+                                <ShieldCheck className="w-5 h-5 text-[#00F0FF]" /> Core Engineering Principles
                             </h3>
                             <ul className="space-y-4 text-xs sm:text-sm text-gray-300">
                                 <li className="flex items-start gap-3">
                                     <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                                    <span><strong>Strict System Boundaries:</strong> Domain-Driven Design (DDD) with clean decoupled microservices.</span>
+                                    <span><strong>Clean Architecture & Scalability:</strong> Domain-Driven Design (DDD), SOLID principles, and loose coupling.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                                    <span><strong>High Throughput SLA:</strong> Sub-20ms P99 latencies using memory pooling and non-blocking I/O.</span>
+                                    <span><strong>High Throughput SLA:</strong> Sub-20ms P99 response times using non-blocking I/O and memory pooling.</span>
                                 </li>
                                 <li className="flex items-start gap-3">
                                     <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                                    <span><strong>Zero Downtime CI/CD:</strong> Automated testing pipelines and progressive canary rollouts.</span>
+                                    <span><strong>Test-Driven Engineering:</strong> High unit/integration test coverage and zero-downtime CI/CD deployment pipelines.</span>
                                 </li>
                             </ul>
                         </div>

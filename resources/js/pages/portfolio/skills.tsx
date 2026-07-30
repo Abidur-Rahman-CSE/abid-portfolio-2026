@@ -1,7 +1,8 @@
 import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import { Cpu, ArrowRight } from 'lucide-react';
+import { Cpu, ArrowRight, Box } from 'lucide-react';
 import PortfolioLayout from '@/layouts/PortfolioLayout';
+import ThreeCanvas from '@/components/ThreeCanvas';
 
 interface Skill {
     id: number;
@@ -25,15 +26,26 @@ export default function Skills({ skills }: { skills: Skill[] }) {
 
             <div className="max-w-7xl mx-auto px-6 py-12 space-y-16">
                 
-                {/* Header */}
-                <div className="max-w-3xl">
-                    <div className="text-[#00F0FF] font-mono text-xs tracking-widest uppercase mb-3">// TECHNICAL MASTERY</div>
-                    <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-                        Software Engineering Arsenal
-                    </h1>
-                    <p className="text-gray-300 text-lg leading-relaxed">
-                        A comprehensive matrix of programming languages, frameworks, AI models, and cloud tools I use to engineer robust software architectures.
-                    </p>
+                {/* Header & 3D Interactive WebGL Node Preview */}
+                <div className="grid lg:grid-cols-12 gap-12 items-center">
+                    <div className="lg:col-span-7 space-y-4">
+                        <div className="text-[#00F0FF] font-mono text-xs tracking-widest uppercase">// TECHNICAL MASTERY & 3D WEBGL</div>
+                        <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                            Software Engineering Arsenal
+                        </h1>
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                            A comprehensive matrix of programming languages, microservice architectures, Three.js WebGL rendering, AI models, and cloud tools.
+                        </p>
+                    </div>
+
+                    <div className="lg:col-span-5">
+                        <div className="h-64 rounded-2xl border border-white/15 bg-[#09090e]/90 overflow-hidden shadow-2xl relative">
+                            <ThreeCanvas color="#A855F7" speed={0.008} />
+                            <div className="absolute top-3 left-3 text-xs font-mono text-[#00F0FF] bg-black/60 px-3 py-1 rounded-full border border-white/10">
+                                3D Polyhedron Node Network
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Skills Grid */}

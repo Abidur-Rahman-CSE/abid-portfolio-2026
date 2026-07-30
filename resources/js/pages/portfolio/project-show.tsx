@@ -15,7 +15,7 @@ interface Project {
 export default function ProjectShow({ project }: { project: Project }) {
     return (
         <PortfolioLayout>
-            <Head title={`${project.title} | Case Study`} />
+            <Head title={`${project.title} | Architecture Case Study`} />
 
             <div className="max-w-5xl mx-auto px-6 py-12 space-y-12">
                 
@@ -59,13 +59,13 @@ export default function ProjectShow({ project }: { project: Project }) {
                 <div className="grid md:grid-cols-12 gap-12">
                     <div className="md:col-span-7 space-y-6 text-gray-300 leading-relaxed">
                         <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                            <Activity className="w-5 h-5 text-[#00F0FF]" /> Overview & Requirements
+                            <Activity className="w-5 h-5 text-[#00F0FF]" /> System Overview
                         </h2>
                         <p>{project.description}</p>
                         
-                        <h3 className="text-lg font-bold text-white pt-4">Technical Challenge Solved</h3>
+                        <h3 className="text-lg font-bold text-white pt-4">Technical Architecture Solved</h3>
                         <p className="text-sm text-gray-400">
-                            High-concurrency systems often suffer from memory fragmentation and locking overhead under peak loads. This architecture was designed with a lock-free event model and asynchronous thread pools to maintain predictable response times.
+                            High-concurrency platforms suffer from lock contention and memory allocation bottlenecks. This architecture uses asynchronous thread pools, non-blocking I/O, and Redis memory caching to maintain predictable sub-second response times.
                         </p>
                     </div>
 
@@ -82,7 +82,7 @@ export default function ProjectShow({ project }: { project: Project }) {
                                 </div>
                                 <div className="flex justify-between py-2 border-b border-white/10">
                                     <span className="text-gray-400">Reliability SLA:</span>
-                                    <span className="text-emerald-400 font-mono font-bold">99.99%</span>
+                                    <span className="text-emerald-400 font-mono font-bold">99.99% Uptime</span>
                                 </div>
                                 <div className="flex justify-between py-2">
                                     <span className="text-gray-400">Concurrency:</span>

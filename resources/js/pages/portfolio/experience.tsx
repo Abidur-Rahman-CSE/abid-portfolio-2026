@@ -55,7 +55,7 @@ export default function Experience() {
                         Professional Engineering Experience
                     </h1>
                     <p className="text-gray-300 text-lg leading-relaxed">
-                        A history of building scalable distributed systems, leading development teams, and shipping production applications.
+                        A track record of architecting scalable distributed systems, leading software engineering teams, and shipping production applications.
                     </p>
                 </div>
 

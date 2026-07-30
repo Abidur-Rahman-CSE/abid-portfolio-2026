@@ -1,6 +1,6 @@
 import { Link, usePage } from '@inertiajs/react';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { Mail, Github, Linkedin, Sparkles } from 'lucide-react';
+import { Mail, Github, Linkedin, Sparkles, Box, FileText } from 'lucide-react';
 import { ReactNode } from 'react';
 
 interface Props {
@@ -30,8 +30,8 @@ export default function PortfolioLayout({ children }: Props) {
             />
 
             {/* Ambient Background Radial Lights */}
-            <div className="fixed top-[-10%] left-[20%] w-[500px] h-[500px] bg-[#7000FF]/15 rounded-full blur-[160px] pointer-events-none z-0" />
-            <div className="fixed top-[40%] right-[-10%] w-[600px] h-[600px] bg-[#00F0FF]/10 rounded-full blur-[180px] pointer-events-none z-0" />
+            <div className="fixed top-[-10%] left-[20%] w-[550px] h-[550px] bg-[#7000FF]/15 rounded-full blur-[170px] pointer-events-none z-0" />
+            <div className="fixed top-[40%] right-[-10%] w-[650px] h-[650px] bg-[#00F0FF]/10 rounded-full blur-[190px] pointer-events-none z-0" />
             <div className="fixed bottom-[-10%] left-[-5%] w-[550px] h-[550px] bg-[#7000FF]/10 rounded-full blur-[170px] pointer-events-none z-0" />
 
             {/* Subtle Grid Overlay */}
@@ -41,21 +41,21 @@ export default function PortfolioLayout({ children }: Props) {
             <header className="fixed top-0 w-full z-40 bg-[#08080c]/85 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
                 <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-3 group">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F0FF] to-[#7000FF] p-[1px] shadow-lg shadow-[#00F0FF]/20 group-hover:scale-105 transition-transform">
-                            <div className="w-full h-full bg-[#050508] rounded-[11px] flex items-center justify-center font-mono font-bold text-white text-sm">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00F0FF] via-[#A855F7] to-[#7000FF] p-[1px] shadow-lg shadow-[#00F0FF]/20 group-hover:scale-105 transition-transform">
+                            <div className="w-full h-full bg-[#050508] rounded-[11px] flex items-center justify-center font-mono font-bold text-white text-sm flex items-center gap-1">
                                 AR
                             </div>
                         </div>
                         <div>
                             <span className="font-bold text-white tracking-tight text-lg group-hover:text-[#00F0FF] transition-colors">Abidur Rahman</span>
-                            <span className="text-xs text-gray-400 block font-mono">Software & AI Architect</span>
+                            <span className="text-xs text-gray-400 block font-mono">Senior Software & AI Engineer</span>
                         </div>
                     </Link>
 
                     {/* Status Pill */}
                     <div className="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                        Available for Senior Roles & Architecture Consulting
+                        Available for Senior Engineering Roles & Architecture Consulting
                     </div>
 
                     <nav className="hidden md:flex items-center gap-1 bg-white/5 border border-white/10 p-1.5 rounded-xl backdrop-blur-md">
@@ -63,7 +63,7 @@ export default function PortfolioLayout({ children }: Props) {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className={`px-4 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all ${
+                                className={`px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all ${
                                     item.active
                                         ? 'bg-[#00F0FF] text-black shadow-md shadow-[#00F0FF]/30 font-bold'
                                         : 'text-gray-300 hover:text-white hover:bg-white/5'
@@ -74,12 +74,14 @@ export default function PortfolioLayout({ children }: Props) {
                         ))}
                     </nav>
 
-                    <Link 
-                        href="/contact"
-                        className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#00F0FF] to-[#00A3FF] text-black font-bold text-xs hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all hover:scale-105"
-                    >
-                        <Sparkles className="w-3.5 h-3.5" /> Contact
-                    </Link>
+                    <div className="hidden sm:flex items-center gap-3">
+                        <Link 
+                            href="/contact"
+                            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#00F0FF] to-[#00A3FF] text-black font-bold text-xs hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all hover:scale-105"
+                        >
+                            <Sparkles className="w-3.5 h-3.5" /> Get in Touch
+                        </Link>
+                    </div>
                 </div>
             </header>
 
@@ -97,22 +99,22 @@ export default function PortfolioLayout({ children }: Props) {
                                 AR
                             </div>
                         </div>
-                        <span className="text-xs text-gray-400 font-mono">Abidur Rahman &bull; Senior Software Engineer</span>
+                        <span className="text-xs text-gray-400 font-mono">Abidur Rahman &bull; Senior Software & AI Engineer</span>
                     </div>
 
                     <div className="flex items-center gap-4">
-                        <a href="https://github.com/Abidur-Rahman-CSE" target="_blank" rel="noreferrer" className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-[#00F0FF] hover:bg-white/10 transition-all">
+                        <a href="https://github.com/Abidur-Rahman-CSE" target="_blank" rel="noreferrer" className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-[#00F0FF] hover:bg-white/10 transition-all" title="GitHub Profile">
                             <Github className="w-4 h-4" />
                         </a>
-                        <a href="#" className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-[#00F0FF] hover:bg-white/10 transition-all">
+                        <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-[#00F0FF] hover:bg-white/10 transition-all" title="LinkedIn Profile">
                             <Linkedin className="w-4 h-4" />
                         </a>
-                        <a href="mailto:abid@example.com" className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-[#00F0FF] hover:bg-white/10 transition-all">
+                        <a href="mailto:abidur.rahman.dev@gmail.com" className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-[#00F0FF] hover:bg-white/10 transition-all" title="Send Email">
                             <Mail className="w-4 h-4" />
                         </a>
                     </div>
 
-                    <p className="text-xs text-gray-600 font-mono">&copy; {new Date().getFullYear()} All rights reserved.</p>
+                    <p className="text-xs text-gray-600 font-mono">&copy; {new Date().getFullYear()} Abidur Rahman. All rights reserved.</p>
                 </div>
             </footer>
         </div>

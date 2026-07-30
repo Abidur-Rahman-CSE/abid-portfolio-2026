@@ -26,7 +26,7 @@ export default function Contact() {
     };
 
     const copyEmail = () => {
-        navigator.clipboard.writeText('abid@example.com');
+        navigator.clipboard.writeText('abidur.rahman.dev@gmail.com');
         setCopiedEmail(true);
         setTimeout(() => setCopiedEmail(false), 2000);
     };
@@ -40,18 +40,18 @@ export default function Contact() {
                     <div className="absolute top-0 right-0 w-64 h-64 bg-[#00F0FF]/10 rounded-full blur-3xl pointer-events-none" />
 
                     <div className="text-center max-w-2xl mx-auto mb-10">
-                        <div className="text-[#00F0FF] font-mono text-xs tracking-widest uppercase mb-3">// LET'S CONNECT</div>
+                        <div className="text-[#00F0FF] font-mono text-xs tracking-widest uppercase mb-3">// CONNECT WITH ABIDUR RAHMAN</div>
                         <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 tracking-tight">
                             Initialize Engineering Communication
                         </h1>
                         <p className="text-gray-400 text-sm sm:text-base">
-                            Looking to hire a Senior Software Engineer, build scalable AI architecture, or discuss complex system design? Send a direct message below.
+                            Looking to hire a Senior Software & AI Engineer, discuss system architecture, or build full-stack web applications? Send a direct message below.
                         </p>
 
                         <div className="mt-6 flex items-center justify-center gap-3">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 font-mono text-sm text-gray-200">
-                                <span>abid@example.com</span>
-                                <button onClick={copyEmail} className="text-gray-400 hover:text-[#00F0FF] transition-colors">
+                                <span>abidur.rahman.dev@gmail.com</span>
+                                <button onClick={copyEmail} className="text-gray-400 hover:text-[#00F0FF] transition-colors" title="Copy email">
                                     {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                                 </button>
                             </div>

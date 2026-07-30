@@ -18,9 +18,9 @@ export default function Projects({ projects }: { projects: Project[] }) {
 
     const filteredProjects = projects.filter(p => {
         if (activeTab === 'All') return true;
-        if (activeTab === 'AI & Systems') return p.tags?.some(t => ['PyTorch', 'vLLM', 'C++', 'CUDA', 'TensorRT', 'TensorFlow', 'ONNX'].includes(t));
-        if (activeTab === 'Backend & Cloud') return p.tags?.some(t => ['Golang', 'Kafka', 'Redis', 'Docker', 'Terraform', 'AWS', 'Python'].includes(t));
-        if (activeTab === 'Full Stack') return p.tags?.some(t => ['Laravel', 'React', 'TypeScript', 'Inertia.js'].includes(t));
+        if (activeTab === 'AI & ML Systems') return p.tags?.some(t => ['PyTorch', 'vLLM', 'C++', 'CUDA', 'TensorRT', 'OpenCV'].includes(t));
+        if (activeTab === 'Backend & Cloud') return p.tags?.some(t => ['Golang', 'Apache Kafka', 'Redis', 'Docker', 'Terraform', 'AWS', 'Python'].includes(t));
+        if (activeTab === 'Full Stack & Inertia') return p.tags?.some(t => ['Laravel', 'Laravel 13', 'React', 'React 19', 'TypeScript', 'Inertia.js'].includes(t));
         return true;
     });
 
@@ -35,13 +35,13 @@ export default function Projects({ projects }: { projects: Project[] }) {
                     <div>
                         <div className="text-[#00F0FF] font-mono text-xs tracking-widest uppercase mb-3">// PORTFOLIO OF WORK</div>
                         <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-                            Engineered Projects & Systems
+                            Engineered Projects & Case Studies
                         </h1>
                     </div>
 
                     {/* Filter Tabs */}
                     <div className="flex flex-wrap gap-2 p-1.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
-                        {['All', 'AI & Systems', 'Backend & Cloud', 'Full Stack'].map(tab => (
+                        {['All', 'AI & ML Systems', 'Backend & Cloud', 'Full Stack & Inertia'].map(tab => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
