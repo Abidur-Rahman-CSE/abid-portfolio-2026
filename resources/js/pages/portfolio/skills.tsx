@@ -1,6 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import { Cpu, ArrowRight, Box } from 'lucide-react';
+import { Cpu, ArrowRight } from 'lucide-react';
 import PortfolioLayout from '@/layouts/PortfolioLayout';
 import ThreeCanvas from '@/components/ThreeCanvas';
 
@@ -39,9 +39,9 @@ export default function Skills({ skills }: { skills: Skill[] }) {
                     </div>
 
                     <div className="lg:col-span-5">
-                        <div className="h-64 rounded-2xl border border-white/15 bg-[#09090e]/90 overflow-hidden shadow-2xl relative">
-                            <ThreeCanvas color="#A855F7" speed={0.008} />
-                            <div className="absolute top-3 left-3 text-xs font-mono text-[#00F0FF] bg-black/60 px-3 py-1 rounded-full border border-white/10">
+                        <div className="h-64 rounded-2xl border border-white/15 bg-[#090914]/90 overflow-hidden shadow-2xl relative backdrop-blur-xl">
+                            <ThreeCanvas color="#8B5CF6" speed={0.008} />
+                            <div className="absolute top-3 left-3 text-xs font-mono text-[#00F0FF] bg-black/60 px-3 py-1 rounded-full border border-white/10 backdrop-blur-md shadow-sm">
                                 3D Polyhedron Node Network
                             </div>
                         </div>
@@ -56,7 +56,7 @@ export default function Skills({ skills }: { skills: Skill[] }) {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="p-6 rounded-2xl bg-[#09090f]/90 border border-white/10 hover:border-[#00F0FF]/40 transition-all duration-300"
+                            className="p-6 rounded-2xl bg-[#090914]/90 backdrop-blur-xl border border-white/10 hover:border-[#00F0FF]/40 transition-all duration-300 shadow-sm hover:shadow-md"
                         >
                             <h3 className="text-[#00F0FF] font-mono text-xs tracking-widest uppercase mb-6 pb-3 border-b border-white/10 flex items-center gap-2">
                                 <Cpu className="w-4 h-4 text-[#00F0FF]" /> {category}
@@ -77,7 +77,7 @@ export default function Skills({ skills }: { skills: Skill[] }) {
 
                 {/* CTA */}
                 <div className="text-center border-t border-white/10 pt-12">
-                    <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#00F0FF] text-black font-bold text-xs hover:bg-white transition-colors">
+                    <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#00F0FF] text-black font-bold text-xs hover:bg-white transition-colors shadow-lg cursor-pointer">
                         Initiate Engineering Contact <ArrowRight className="w-4 h-4" />
                     </Link>
                 </div>

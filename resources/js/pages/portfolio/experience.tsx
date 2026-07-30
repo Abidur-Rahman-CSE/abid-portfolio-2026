@@ -50,17 +50,17 @@ export default function Experience() {
                 
                 {/* Header */}
                 <div className="max-w-3xl">
-                    <div className="text-[#00F0FF] font-mono text-xs tracking-widest uppercase mb-3">// CAREER TRAJECTORY</div>
-                    <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                    <div className="text-teal-600 dark:text-[#00F0FF] font-mono text-xs tracking-widest uppercase mb-3">// CAREER TRAJECTORY</div>
+                    <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-4">
                         Professional Engineering Experience
                     </h1>
-                    <p className="text-gray-300 text-lg leading-relaxed">
+                    <p className="text-slate-600 dark:text-gray-300 text-lg leading-relaxed">
                         A track record of architecting scalable distributed systems, leading software engineering teams, and shipping production applications.
                     </p>
                 </div>
 
                 {/* Timeline */}
-                <div className="max-w-4xl space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-1/2 before:w-0.5 before:-translate-x-1/2 before:bg-gradient-to-b before:from-[#00F0FF] before:via-[#7000FF] before:to-transparent">
+                <div className="max-w-4xl space-y-8 relative before:absolute before:inset-0 before:left-4 sm:before:left-1/2 before:w-0.5 before:-translate-x-1/2 before:bg-gradient-to-b before:from-teal-500 dark:before:from-[#00F0FF] before:via-purple-600 dark:before:via-[#7000FF] before:to-transparent">
                     {experiences.map((exp, idx) => (
                         <motion.div 
                             key={idx}
@@ -70,21 +70,21 @@ export default function Experience() {
                             className="relative flex flex-col sm:flex-row items-start group"
                         >
                             {/* Dot on Timeline */}
-                            <div className="absolute left-4 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#050508] border-2 border-[#00F0FF] group-hover:scale-125 group-hover:bg-[#00F0FF] transition-all duration-300 z-10" />
+                            <div className="absolute left-4 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white dark:bg-[#050508] border-2 border-teal-600 dark:border-[#00F0FF] group-hover:scale-125 group-hover:bg-teal-600 dark:group-hover:bg-[#00F0FF] transition-all duration-300 z-10" />
 
                             <div className={`w-full sm:w-[45%] pl-12 sm:pl-0 ${idx % 2 === 0 ? 'sm:pr-12 sm:text-right' : 'sm:ml-auto sm:pl-12'}`}>
-                                <div className="p-6 rounded-2xl bg-[#09090f]/90 backdrop-blur-lg border border-white/10 hover:border-[#00F0FF]/40 transition-all duration-300">
-                                    <span className="text-xs font-mono text-[#00F0FF] bg-[#00F0FF]/10 px-2.5 py-1 rounded-full mb-3 inline-block">
+                                <div className="p-6 rounded-2xl bg-white/60 dark:bg-[#09090f]/90 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 hover:border-teal-500/40 dark:hover:border-[#00F0FF]/40 transition-all duration-300 shadow-sm hover:shadow-md">
+                                    <span className="text-xs font-mono text-teal-600 dark:text-[#00F0FF] bg-teal-500/10 dark:bg-[#00F0FF]/10 px-2.5 py-1 rounded-full mb-3 inline-block font-semibold">
                                         {exp.period}
                                     </span>
-                                    <h3 className="text-xl font-bold text-white">{exp.role}</h3>
-                                    <div className="text-sm text-purple-400 font-semibold mb-4">{exp.company}</div>
-                                    <p className="text-sm text-gray-300 mb-4 leading-relaxed">{exp.description}</p>
+                                    <h3 className="text-xl font-bold">{exp.role}</h3>
+                                    <div className="text-sm text-indigo-600 dark:text-purple-400 font-semibold mb-4">{exp.company}</div>
+                                    <p className="text-sm text-slate-600 dark:text-gray-300 mb-4 leading-relaxed">{exp.description}</p>
                                     
-                                    <ul className="space-y-1.5 text-xs text-gray-400 mb-4 text-left">
+                                    <ul className="space-y-1.5 text-xs text-slate-500 dark:text-gray-400 mb-4 text-left">
                                         {exp.achievements.map((item, i) => (
                                             <li key={i} className="flex items-start gap-2">
-                                                <ChevronRight className="w-3.5 h-3.5 text-[#00F0FF] shrink-0 mt-0.5" />
+                                                <ChevronRight className="w-3.5 h-3.5 text-teal-600 dark:text-[#00F0FF] shrink-0 mt-0.5" />
                                                 <span>{item}</span>
                                             </li>
                                         ))}
@@ -92,7 +92,7 @@ export default function Experience() {
 
                                     <div className="flex flex-wrap gap-1.5">
                                         {exp.skills.map((s, i) => (
-                                            <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-gray-300">
+                                            <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300">
                                                 {s}
                                             </span>
                                         ))}
@@ -104,8 +104,8 @@ export default function Experience() {
                 </div>
 
                 {/* CTA */}
-                <div className="text-center border-t border-white/10 pt-12">
-                    <Link href="/projects" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#00F0FF] text-black font-bold text-xs hover:bg-white transition-colors">
+                <div className="text-center border-t border-slate-200 dark:border-white/10 pt-12">
+                    <Link href="/projects" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-teal-600 dark:bg-[#00F0FF] text-white dark:text-black font-bold text-xs hover:bg-slate-900 dark:hover:bg-white transition-colors shadow-lg cursor-pointer">
                         Explore Featured Projects & Case Studies <ArrowRight className="w-4 h-4" />
                     </Link>
                 </div>

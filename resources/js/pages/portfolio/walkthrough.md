@@ -1,49 +1,21 @@
-# Walkthrough: Abidur Rahman - Senior Software & AI Engineer Portfolio
+# Walkthrough: Dark Mode Card Styling & Document Root Theme Sync Fix
 
-We have fully updated and personalized the portfolio application specifically for **Abidur Rahman**, Senior Software & AI Engineer. The site integrates interactive Three.js 3D WebGL scenes, real-world software engineering projects, authentic contact info, and an Inertia SPA multi-page structure.
+We fixed the issue where cards, metrics, terminal widgets, and profile buttons rendered with a light grey background in Dark Mode.
 
 ---
 
-## Portfolio Features & Updates
+## Root Cause & Solution Implemented
 
-### 1. **Personal Branding & Hero Showcase (`home.tsx`)**
-- **Personalized Intro**: "Hi, I'm Abidur Rahman &bull; Senior Software & AI Engineer".
-- **Interactive Three.js WebGL Core**: Real-time 3D polyhedron canvas (`ThreeCanvas.tsx`) with cursor parallax tracking, floating particle field, and wireframe toggles.
-- **Direct GitHub & Contact Buttons**: Link directly to `https://github.com/Abidur-Rahman-CSE`.
-- **System Metrics**: `99.99% Uptime SLA`, `50k+ Events/sec`, `5+ Yrs Experience`, `15+ Shipped Systems`.
-- **CLI IDE Terminal**: Interactive status, performance metrics, and technology stack tabs.
+### 1. **Document Root Dark Class Synchronization (`PortfolioLayout.tsx`)**
+- Added `useEffect` hook in `PortfolioLayout.tsx` to automatically toggle `document.documentElement.classList.add('dark')` / `remove('dark')` whenever `isDark` state changes.
+- Ensured Tailwind CSS `dark:` variant is active across all components on document root.
 
-### 2. **Authentic Project Case Studies (`database/seeders/DatabaseSeeder.php` & `projects.tsx`)**
-- **Genesis AI - Subject Choice & Allocation Engine**: High-concurrency automated university subject allocation engine in Laravel, PHP 8.4, React, MySQL, and Inertia.js.
-- **HyperScale LLM Inference Pipeline**: Distributed GPU cluster orchestration in PyTorch, vLLM, Rust, Kubernetes, and gRPC.
-- **EventPulse Telemetry Microservices**: High-throughput event processing platform handling 50k+ msgs/sec in Golang, Kafka, and Redis.
-- **AbidPortfolio 3D**: Full-stack showcase in Laravel 13, Inertia v3, React 19, Tailwind v4, and Three.js 3D WebGL.
-- **EdgeVision Analytics**: Edge computer vision engine in C++, TensorRT, CUDA, and OpenCV.
-- **CloudForge IaC Automation**: Automated infrastructure provisioning platform in Terraform, AWS, Python, and PostgreSQL.
-
-### 3. **Engineering Philosophy & Principles (`about.tsx`)**
-- In-depth bio covering software engineering principles, SOLID design patterns, Domain-Driven Design (DDD), and test-driven reliability.
-- Production engineering code playground (*LLM Inference Router*, *Go Kafka Consumer*, *Inertia Optimistic UI*).
-
-### 4. **Career Experience Trajectory (`experience.tsx`)**
-- Timeline detailing experience as Senior Software & AI Engineer, Full Stack Systems Engineer, and Software Developer.
-
-### 5. **Categorized Software Arsenal (`skills.tsx`)**
-- Grouped skill cards for **Languages & Core**, **Backend & Systems**, **Frontend & 3D WebGL**, **AI/ML & Data Systems**, and **Cloud & DevOps**.
-
-### 6. **Direct Communication & Contact System (`contact.tsx`)**
-- Working contact form with direct mail copy button for `abidur.rahman.dev@gmail.com` and instant flash feedback.
+### 2. **Explicit Dark Card Styling (`home.tsx` & `skills.tsx`)**
+- Updated all cards, metric boxes (`99.99%`, `50k+`, `5+ Yrs`, `15+`), terminal containers, GitHub profile button, architecture pillars, featured projects, code playground, and testimonials to use explicit rich dark obsidian containers (`bg-[#090914]/90` / `bg-[#0c0c16]` / `bg-[#0f0f1c]`) with subtle `border-white/10` borders and high-contrast text in Dark Mode.
 
 ---
 
 ## Verification Results
 
-- **Database Refresh**: Fresh database seeded with Abidur Rahman's software engineering projects and technical skills (`php artisan migrate:fresh --seed`).
-- **Asset Build**: Vite compiled clean WebGL and TypeScript bundles (`npm run build`).
-- **HTTP Endpoints**: Verified `HTTP 200 OK` across all portfolio routes:
-  - `GET /` -> `200 OK`
-  - `GET /about` -> `200 OK`
-  - `GET /experience` -> `200 OK`
-  - `GET /projects` -> `200 OK`
-  - `GET /skills` -> `200 OK`
-  - `GET /contact` -> `200 OK`
+- **Asset Compilation**: `npm run build` completed cleanly in 2.65s.
+- **HTTP Endpoint**: `GET /` returned `200 OK`.
