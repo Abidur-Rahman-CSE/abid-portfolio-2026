@@ -24,10 +24,11 @@ export default function PortfolioLayout({ children }: Props) {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
+            const root = document.documentElement;
             if (isDark) {
-                document.documentElement.classList.add('dark');
+                root.classList.add('dark');
             } else {
-                document.documentElement.classList.remove('dark');
+                root.classList.remove('dark');
             }
         }
     }, [isDark]);
@@ -54,7 +55,7 @@ export default function PortfolioLayout({ children }: Props) {
     return (
         <div className={`min-h-screen font-sans transition-colors duration-500 overflow-x-hidden relative flex flex-col justify-between ${
             isDark 
-                ? 'bg-[#030712] text-[#E2E8F0] selection:bg-[#00F0FF] selection:text-black dark' 
+                ? 'bg-[#030712] text-[#E2E8F0] selection:bg-[#00F0FF] selection:text-black' 
                 : 'bg-[#F8FAFC] text-[#0F172A] selection:bg-[#0D9488] selection:text-white'
         }`}>
             {/* Ambient 3D Three.js WebGL Background */}

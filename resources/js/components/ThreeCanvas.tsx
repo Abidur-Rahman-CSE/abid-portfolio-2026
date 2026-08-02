@@ -7,6 +7,30 @@ interface Props {
     color?: string;
 }
 
+// Generate smooth circular particle texture dynamically
+function createCircleTexture(): THREE.CanvasTexture {
+    const canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d');
+    
+    if (ctx) {
+        const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+        gradient.addColorStop(0.4, 'rgba(255, 255, 255, 0.7)');
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(32, 32, 32, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.needsUpdate = true;
+    return texture;
+}
+
 export default function ThreeCanvas({ wireframe = false, speed = 0.005, color = '#00F0FF' }: Props) {
     const containerRef = useRef<HTMLDivElement>(null);
     const [fps, setFps] = useState(60);
@@ -55,7 +79,7 @@ export default function ThreeCanvas({ wireframe = false, speed = 0.005, color = 
         const innerMesh = new THREE.Mesh(innerGeo, innerMat);
         scene.add(innerMesh);
 
-        // Ambient Particle Starfield
+        // Ambient Circular Particle Constellation
         const particleCount = 200;
         const particlesGeo = new THREE.BufferGeometry();
         const positions = new Float32Array(particleCount * 3);
@@ -67,11 +91,16 @@ export default function ThreeCanvas({ wireframe = false, speed = 0.005, color = 
         }
 
         particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const circleTexture = createCircleTexture();
+
         const particlesMat = new THREE.PointsMaterial({
-            size: 0.035,
+            size: 0.15,
             color: new THREE.Color('#00F0FF'),
+            map: circleTexture,
             transparent: true,
-            opacity: 0.6,
+            opacity: 0.65,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending,
         });
         const particleSystem = new THREE.Points(particlesGeo, particlesMat);
         scene.add(particleSystem);
@@ -159,6 +188,7 @@ export default function ThreeCanvas({ wireframe = false, speed = 0.005, color = 
             innerMat.dispose();
             particlesGeo.dispose();
             particlesMat.dispose();
+            circleTexture.dispose();
             renderer.dispose();
         };
     }, [wireframe, speed, color]);

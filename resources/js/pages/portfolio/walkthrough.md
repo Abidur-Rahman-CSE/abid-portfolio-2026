@@ -1,21 +1,22 @@
-# Walkthrough: Dark Mode Card Styling & Document Root Theme Sync Fix
+# Walkthrough: Dual Theme Responsive Card Color Fix
 
-We fixed the issue where cards, metrics, terminal widgets, and profile buttons rendered with a light grey background in Dark Mode.
+We fixed the issue where cards remained dark when switching to Light Mode.
 
 ---
 
-## Root Cause & Solution Implemented
+## Fix Implemented
 
-### 1. **Document Root Dark Class Synchronization (`PortfolioLayout.tsx`)**
-- Added `useEffect` hook in `PortfolioLayout.tsx` to automatically toggle `document.documentElement.classList.add('dark')` / `remove('dark')` whenever `isDark` state changes.
-- Ensured Tailwind CSS `dark:` variant is active across all components on document root.
+### 1. **Root HTML Dark Class Toggle (`PortfolioLayout.tsx`)**
+- Updated `PortfolioLayout.tsx` to automatically append `dark` class to `document.documentElement` when Dark Mode is active and remove `dark` class when Light Mode is selected.
 
-### 2. **Explicit Dark Card Styling (`home.tsx` & `skills.tsx`)**
-- Updated all cards, metric boxes (`99.99%`, `50k+`, `5+ Yrs`, `15+`), terminal containers, GitHub profile button, architecture pillars, featured projects, code playground, and testimonials to use explicit rich dark obsidian containers (`bg-[#090914]/90` / `bg-[#0c0c16]` / `bg-[#0f0f1c]`) with subtle `border-white/10` borders and high-contrast text in Dark Mode.
+### 2. **Dynamic Dual Theme Styling (`home.tsx`)**
+- Configured every card container, button, metric box, and text element on `home.tsx` with responsive light and dark classes:
+  - **Light Theme**: `bg-white/80 border-slate-200/80 text-slate-900 shadow-md`
+  - **Dark Theme**: `dark:bg-[#090914]/90 dark:border-white/10 dark:text-white dark:shadow-2xl`
 
 ---
 
 ## Verification Results
 
-- **Asset Compilation**: `npm run build` completed cleanly in 2.65s.
-- **HTTP Endpoint**: `GET /` returned `200 OK`.
+- **Asset Compilation**: `npm run build` compiled in 2.63s.
+- **HTTP Verification**: `GET /` returned `200 OK`.
