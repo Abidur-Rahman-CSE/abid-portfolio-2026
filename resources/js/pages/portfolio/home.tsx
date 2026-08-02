@@ -1,9 +1,9 @@
 import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Terminal, Sparkles, Cpu, Layers, Activity, ChevronRight, Eye, Box, Code2, Zap, Server, MessageSquare, Quote, Mail, Check, Copy, Star } from 'lucide-react';
+import { ArrowRight, Terminal, Sparkles, Cpu, Layers, Activity, ChevronRight, Box, Code2, Zap, Server, MessageSquare, Quote, Mail, Check, Copy, Star, Network, Layers3 } from 'lucide-react';
 import { useState } from 'react';
 import PortfolioLayout from '@/layouts/PortfolioLayout';
-import ThreeCanvas from '@/components/ThreeCanvas';
+import ThreeCanvas, { SERVICE_NODES } from '@/components/ThreeCanvas';
 
 interface Project {
     id: number;
@@ -122,8 +122,9 @@ const architecturePillars = [
 ];
 
 export default function Home({ featuredProjects }: { featuredProjects: Project[] }) {
-    const [terminalTab, setTerminalTab] = useState<'status' | 'metrics' | 'stack'>('status');
-    const [is3DWireframe, setIs3DWireframe] = useState(false);
+    const [terminalTab, setTerminalTab] = useState<'status' | 'nodes' | 'stack'>('status');
+    const [viewMode, setViewMode] = useState<'architecture' | 'dataflow'>('architecture');
+    const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
     const [activeCodeFile, setActiveCodeFile] = useState<keyof typeof codeSnippets>('llm_router.py');
     const [copiedSnippet, setCopiedSnippet] = useState(false);
 
@@ -203,49 +204,71 @@ export default function Home({ featuredProjects }: { featuredProjects: Project[]
                         </div>
                     </motion.div>
 
-                    {/* Hero Right Interactive Three.js WebGL Core & Terminal */}
+                    {/* Hero Right Interactive Intelligent Platform Architecture & Terminal */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="lg:col-span-5 space-y-6"
                     >
-                        {/* Three.js 3D WebGL Canvas Card */}
-                        <div className="rounded-2xl border bg-white/80 border-slate-200/80 text-slate-900 shadow-xl dark:bg-[#090914]/90 dark:border-white/15 dark:text-white backdrop-blur-2xl overflow-hidden font-mono text-sm relative">
+                        {/* 3D Intelligent Platform Architecture Card */}
+                        <div className="rounded-2xl border bg-white/85 border-slate-200/80 text-slate-900 shadow-xl dark:bg-[#090914]/90 dark:border-white/15 dark:text-white backdrop-blur-2xl overflow-hidden font-mono text-sm relative flex flex-col justify-between">
+                            
+                            {/* Card Top Header */}
                             <div className="bg-slate-100/90 text-slate-900 border-slate-200 dark:bg-[#0f0f1c] dark:text-white border-b dark:border-white/10 px-4 py-3 flex items-center justify-between">
                                 <div className="flex items-center gap-2">
                                     <Box className="w-4 h-4 text-teal-600 dark:text-[#00F0FF]" />
-                                    <span className="text-xs font-bold">Three.js 3D Cyber Core</span>
+                                    <span className="text-xs font-bold font-sans">Intelligent Platform Architecture</span>
                                 </div>
-                                <div className="flex gap-2">
+                                <div className="flex items-center gap-2">
+                                    <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] text-emerald-600 dark:text-emerald-400 font-mono">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" /> Live System
+                                    </span>
                                     <button
-                                        onClick={() => setIs3DWireframe(!is3DWireframe)}
-                                        className={`px-2.5 py-1 rounded text-xs transition-colors flex items-center gap-1 cursor-pointer ${
-                                            is3DWireframe 
+                                        onClick={() => setViewMode(prev => prev === 'architecture' ? 'dataflow' : 'architecture')}
+                                        className={`px-2.5 py-1 rounded text-xs transition-all flex items-center gap-1 cursor-pointer font-sans ${
+                                            viewMode === 'dataflow'
                                                 ? 'bg-teal-600 text-white dark:bg-[#00F0FF] dark:text-black font-bold' 
                                                 : 'bg-slate-200 text-slate-700 dark:bg-white/5 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white'
                                         }`}
                                     >
-                                        <Eye className="w-3 h-3" /> Wireframe
+                                        {viewMode === 'architecture' ? <Network className="w-3 h-3" /> : <Layers3 className="w-3 h-3" />}
+                                        <span className="capitalize">{viewMode}</span>
                                     </button>
                                 </div>
                             </div>
 
-                            {/* Three.js Canvas Container */}
-                            <div className="h-[260px] relative">
-                                <ThreeCanvas wireframe={is3DWireframe} />
+                            {/* Main 3D Visualization Area (Occupies ~70% visual space) */}
+                            <div className="h-[380px] sm:h-[400px] w-full relative">
+                                <ThreeCanvas 
+                                    viewMode={viewMode} 
+                                    onNodeSelect={(nodeId) => setSelectedNodeId(nodeId)} 
+                                />
+
+                                {/* Bottom System Status Overlay */}
+                                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[10px] font-mono text-slate-700 dark:text-gray-300 bg-white/70 dark:bg-black/60 px-3 py-1.5 rounded-lg border border-slate-200/80 dark:border-white/10 backdrop-blur-md shadow-sm">
+                                    <div className="flex items-center gap-2">
+                                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                        <span className="font-semibold text-emerald-600 dark:text-emerald-400">Platform Operational</span>
+                                    </div>
+                                    <div className="hidden sm:flex items-center gap-3">
+                                        <span>6 Connected Services</span>
+                                        <span>&bull;</span>
+                                        <span className="text-teal-600 dark:text-[#00F0FF]">Real-time Data Flow</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        {/* CLI IDE Terminal Widget */}
-                        <div className="rounded-2xl border bg-white/80 border-slate-200/80 text-slate-900 shadow-xl dark:bg-[#090914]/90 dark:border-white/15 dark:text-white backdrop-blur-2xl overflow-hidden font-mono text-sm">
+                        {/* Redesigned Realistic Engineering Terminal Card */}
+                        <div className="rounded-2xl border bg-white/85 border-slate-200/80 text-slate-900 shadow-xl dark:bg-[#090914]/90 dark:border-white/15 dark:text-white backdrop-blur-2xl overflow-hidden font-mono text-sm">
                             <div className="bg-slate-100/90 text-slate-700 border-slate-200 dark:bg-[#0f0f1c] dark:text-gray-400 border-b dark:border-white/10 px-4 py-2.5 flex items-center justify-between">
                                 <div className="flex items-center gap-2">
                                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
                                     <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
                                     <span className="text-xs ml-1 flex items-center gap-1.5">
-                                        <Terminal className="w-3.5 h-3.5 text-teal-600 dark:text-[#00F0FF]" /> abid@engineer-node:~
+                                        <Terminal className="w-3.5 h-3.5 text-teal-600 dark:text-[#00F0FF]" /> abid-platform-core — running
                                     </span>
                                 </div>
                                 <div className="flex gap-1 text-xs">
@@ -256,10 +279,10 @@ export default function Home({ featuredProjects }: { featuredProjects: Project[]
                                         status
                                     </button>
                                     <button 
-                                        onClick={() => setTerminalTab('metrics')} 
-                                        className={`px-2 py-0.5 rounded transition-colors cursor-pointer ${terminalTab === 'metrics' ? 'bg-teal-500/20 text-teal-700 dark:text-[#00F0FF]' : 'text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white'}`}
+                                        onClick={() => setTerminalTab('nodes')} 
+                                        className={`px-2 py-0.5 rounded transition-colors cursor-pointer ${terminalTab === 'nodes' ? 'bg-teal-500/20 text-teal-700 dark:text-[#00F0FF]' : 'text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white'}`}
                                     >
-                                        metrics
+                                        services
                                     </button>
                                     <button 
                                         onClick={() => setTerminalTab('stack')} 
@@ -272,30 +295,33 @@ export default function Home({ featuredProjects }: { featuredProjects: Project[]
 
                             <div className="p-4 text-xs leading-relaxed min-h-[140px] bg-slate-50 text-slate-800 dark:bg-[#070710] dark:text-gray-300">
                                 {terminalTab === 'status' && (
-                                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                                        <div className="text-emerald-600 dark:text-emerald-400 font-bold">● abid-systems.service - Running</div>
-                                        <div className="pt-1">
-                                            [OK] Three.js WebGL 3D Engine initialized<br />
-                                            [OK] Genesis AI Allocation Engine active<br />
-                                            [OK] Distributed GPU inference cluster active
-                                        </div>
+                                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-0.5">
+                                        <div className="text-emerald-600 dark:text-emerald-400 font-bold mb-1">● abid-platform-core — running</div>
+                                        <div>[OK] Laravel API Gateway connected</div>
+                                        <div>[OK] React client synchronized</div>
+                                        <div>[OK] PostgreSQL data layer healthy</div>
+                                        <div>[OK] AI vision worker available</div>
+                                        <div>[OK] Workflow queue processing</div>
+                                        <div>[OK] Production runtime operational</div>
                                     </motion.div>
                                 )}
 
-                                {terminalTab === 'metrics' && (
+                                {terminalTab === 'nodes' && (
                                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-1">
-                                        <div className="text-purple-600 dark:text-purple-400 font-bold">CORE PERFORMANCE METRICS</div>
-                                        <div>
-                                            WebGL Render Target: <span className="text-teal-600 dark:text-[#00F0FF]">60 FPS</span><br />
-                                            Avg Latency P99     : <span className="text-teal-600 dark:text-[#00F0FF]">14.2ms</span>
-                                        </div>
+                                        <div className="text-teal-600 dark:text-[#00F0FF] font-bold">CONNECTED PLATFORM SERVICES (6)</div>
+                                        {SERVICE_NODES.map(n => (
+                                            <div key={n.id} className="flex items-center justify-between text-[11px]">
+                                                <span>&bull; {n.title}</span>
+                                                <span className="text-emerald-600 dark:text-emerald-400">ONLINE</span>
+                                            </div>
+                                        ))}
                                     </motion.div>
                                 )}
 
                                 {terminalTab === 'stack' && (
                                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                                         <div className="text-indigo-600 dark:text-yellow-400 font-mono">
-                                            ["Laravel 13", "React 19", "Three.js", "Golang", "PyTorch", "Docker"]
+                                            ["Laravel 13", "React 19", "Inertia.js v3", "TypeScript", "PostgreSQL", "AI Vision", "Docker"]
                                         </div>
                                     </motion.div>
                                 )}
